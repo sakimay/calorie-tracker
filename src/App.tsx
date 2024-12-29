@@ -1,6 +1,9 @@
 import Form from './components/Form'
-function App() {
+import { useReducer } from 'react'
+import { activityReducer, initialState } from './reducers/activity-reducer'
 
+function App() {
+  const [state, dispatch] = useReducer(activityReducer, initialState)
 
   return (
     <>
@@ -14,7 +17,9 @@ function App() {
 
       <section className="bg-lime-500 py-20 px-50">
         <div className="max-w-4xl mx-auto">
-          <Form />
+          <Form 
+            dispatch={dispatch}
+          />
         </div>
       </section>
 
