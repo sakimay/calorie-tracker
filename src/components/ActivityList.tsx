@@ -21,7 +21,7 @@ export default function ActivityList({ activities, dispatch }: ActivityListProps
             {isEmptyActivities ? <p className="text-center my-5">No hay actividades aún ...</p> :
 
                 activities.map(activity => (
-                    <div key={activity.id} className="px-5 py-10 mt-5 flex justify-between bg-slate-200">
+                    <div key={activity.id} className="px-5 py-10 mt-5 flex justify-between bg-white shadow">
                         <div className="space-y-2 relative">
                             <p className={`absolute -top-8 -left-8 px-10 py-2 text-white uppercase font-bold ${activity.category === 1 ? 'bg-lime-500' : 'bg-orange-500'}`}>{categoryName(+activity.category)}</p>
                             <p className="text-2xl font-bold pt-5">{activity.name}</p>
