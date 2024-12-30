@@ -19,13 +19,20 @@ export const activityReducer = (
     action: ActivityActions
 ) => {
     if (action.type === 'save-activity') {
-        console.log('desde el type de save-activity', action.payload.newActivity);
+        let updatedActivities: Activity[] = []
+        if (state.activeId) {
+            updatedActivities = state.activities.map(activity => activity.id === state.activeId ? action.payload.newActivity : activity) 
+        } else {
+            updatedActivities = [...state.activities, action.payload.newActivity]
+        }
+
         return {
             ...state,
-            activities: [...state.activities, action.payload.newActivity]
+            activities: updatedActivities,
+            activeId: ''
         }
     }
-    if(action.type === 'set-activeId') {
+    if (action.type === 'set-activeId') {
         return {
             ...state,
             activeId: action.payload.id
